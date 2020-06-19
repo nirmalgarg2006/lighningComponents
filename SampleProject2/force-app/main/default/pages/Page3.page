@@ -1,0 +1,10 @@
+<apex:page standardController="account" extensions="Page3Controller" action="{!pageaction}" >
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+            <apex:outputText value="{!account.name}"></apex:outputText>
+            <apex:outputText value="{!message}"></apex:outputText>
+            <apex:outputText value="{!pagemessage}"></apex:outputText>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:detail relatedList="false"/>
+</apex:page>

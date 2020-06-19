@@ -1,0 +1,54 @@
+<apex:page controller="SearchController">
+    <apex:includeScript value="/support/console/48.0/integration.js"/>
+    <script type="text/javascript">
+        function testOpenPrimaryTab(accountid,accountName) {
+            //Open a new primary tab with the salesforce.com home page in it
+            sforce.console.openPrimaryTab(null, '/'+accountid , true, accountName, openSubtab, 'salesforceTab');
+            
+        }
+        
+        var openSubtab = function openSubtab(result) {
+             var primaryTabId = result.id;
+            source.console.openSubtabById(primaryTabId, '/0032x000004fPhu',
+                                   true, 'OppName', null, openSuccess, 'OppTab');
+        };
+    
+    var openSuccess = function openSuccess(result) {
+         if(result.success == true) {
+             alert('subtab successfully opened');
+         }else {
+             alert('subtab cannot be opened');
+         }
+     };
+        
+  </script>
+    <apex:form >
+        <table>
+            <tr>
+                <td>
+                    <apex:outputText value="Account Name"></apex:outputText>
+                </td>
+                <td>
+                    <apex:inputText value="{!accountName}"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <apex:commandButton value="Search" action="{!search}"/>
+                </td>
+            </tr>
+        </table>
+        <apex:outputPanel rendered="{!isAccountFound}">
+            <apex:pageBlock title="Accounts">
+                <apex:pageBlockSection >
+                   <apex:pageBlockTable value="{!lstaccounts}" var="act">
+                       <apex:column >
+                           <apex:commandLink value="{!act.Name}" onclick="testOpenPrimaryTab('{!act.id}', '{!act.Name}'); return false"/>
+                       </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+    
+</apex:page>
