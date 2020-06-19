@@ -1,0 +1,28 @@
+<apex:page standardController="account" recordSetVar="accounts" tabStyle="account" sidebar="false" >
+    <apex:form >
+        <apex:pageBlock >
+        <apex:pageMessages ></apex:pageMessages>
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!save}"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockTable value="{!accounts}" var="a">
+            <apex:column value="{!a.Name}"/>
+            <apex:column headerValue="Industry">
+                <apex:inputField value="{!a.industry}"/>
+            </apex:column>
+            <apex:column >
+            <apex:outputLink value="https://google.com/search?q={!a.name}" target="_blank">
+                Search Google
+            </apex:outputLink>
+            </apex:column>
+            <apex:column >
+            <apex:outputLink value="https://google.com" target="_blank">
+                Search Google
+                <apex:param name="q" value="{!a.name}"/>
+            </apex:outputLink>
+            </apex:column>
+        </apex:pageBlockTable>
+            </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>
