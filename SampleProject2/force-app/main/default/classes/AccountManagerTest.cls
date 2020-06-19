@@ -14,6 +14,7 @@ public class AccountManagerTest {
     
     private static string createtestaccount()
     {
+        //creating test account
         Account acc = new Account(Name = 'Test1');
         insert acc;
         Contact ccc = new Contact(LastName = 'Contact1', AccountId = acc.id);
