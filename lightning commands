@@ -1,0 +1,74 @@
+Steps to create a lightning web component and push it to scratch org:
+
+1. set the path to the folder ---- cd E:\SALESFORCE\Vs Code
+
+2. Create a project -------  sfdx force:project:create --projectname lwc-hello-world
+
+3.Goto that project ------ cd lwc-hello-world
+
+4.uthorize your Dev Hub only the first time you work on a project------- sfdx force:auth:web:login
+
+5.Create a Default Scratch Org ---- sfdx force:org:create -s -f config/project-scratch-def.json -a "lwchelloworld"
+
+6.Create a Lightning Web Component ------ cd force-app/main/default/lwc 
+                                  ------- sfdx force:lightning:component:create --type lwc -n helloWorld -d force-app/main/default/lwc
+
+7.create a hello world component
+       ---  Add this code to the helloWorld.js file.
+
+					 import { LightningElement, api } from 'lwc';
+
+				export default class HelloWorld extends LightningElement {
+				@api name;
+				}		 
+											
+			------Add this code to the helloWorld.html file.
+
+						<template>
+				<lightning-card title="HelloWorld" icon-name="custom:custom14">
+					<div class="slds-card__body slds-card__body_inner">
+						Hello, {name}!
+					</div>
+				</lightning-card>
+				</template>				
+
+---------xml file
+
+     <?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="anotherComponent">
+    <apiVersion>45.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Hello World</masterLabel>
+    <description>Add a classic greeting to any page.</description>
+    <targets>
+      <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+      <targetConfig targets="lightning__AppPage">
+          <property name="name" type="String" label="Name" placeholder="World" description="Enter the name of the person to greet."/>
+      </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
+
+
+8.Push Source to the Scratch Org -------- sfdx force:source:push
+
+9.Open the scratch org ------- sfdx force:org:open
+
+10.Add the Component to a Lightning Page
+		In the scratch org, in Setup, enter bui and click Lightning App Builder.
+		To create a Lightning page, click New.
+		Select App Page and click Next.
+		Enter the label Hello World.
+		Select Three Regions and click Finish.
+		Drag the Hello World component from the Custom list of components to a region on the page.				
+		Select the component and enter a Name.
+		Drag more Hello World components to the page, and set a different name for each component.
+		When your page is complete, click Save and Activate.
+		On the Activation page, select an icon, then click Lightning Experience, and add the page to the Lightning Bolt app. Click Save.
+		To exit Lightning App Builder, click Back.
+		From the App Picker, click Bolt Solutions.
+		Click the Hello World tab to see your page and all its greetings.
+    
+  11. deploy lightning component to developer org
+    sfdx force:source:deploy -p <lightning component path> -u <developer org user name>
