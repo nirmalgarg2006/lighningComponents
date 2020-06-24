@@ -1,9 +1,9 @@
 <template>
     <lightning-card title="Create Account" icon-name="custom:custom4">
-        <lightning-record-form object-api-name={accountObject} fields={accountfield} 
-        onsuccess={handlecreateaccount}>
-
-        </lightning-record-form>
         
+            <lightning-record-form object-api-name={accountobject}
+             fields={myfields} onsuccess={handlerAccountCreated}>
+    
+            </lightning-record-form>
     </lightning-card>
 </template>

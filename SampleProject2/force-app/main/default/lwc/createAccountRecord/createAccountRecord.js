@@ -1,17 +1,21 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api} from 'lwc';
 import ACCOUNT_OBJECT from '@salesforce/schema/Account';
 import NAME_FIELD from '@salesforce/schema/Account.Name';
 import WEB_SITE from '@salesforce/schema/Account.Website';
 
 export default class CreateAccountRecord extends LightningElement {
     @api
-    accountid;
+    accoundid;
 
-    accountObject = ACCOUNT_OBJECT;
-    accountfields = [NAME_FIELD, WEB_SITE];
+    accountobject = ACCOUNT_OBJECT;
+    myfields = [NAME_FIELD, WEB_SITE];
 
-    handlecreateaccount(event){
+    handlerAccountCreated(event){
         event.preventDefault();
-        this.accountid = event.detail.id;
+        //let results = event.detail;
+        this.accoundid = event.detail.id;
+        //alert(this.accoundid);
+        const selevent = new CustomEvent('accountcreation', {detail:this.accoundid});
+        this.dispatchEvent(selevent);
     }
 }

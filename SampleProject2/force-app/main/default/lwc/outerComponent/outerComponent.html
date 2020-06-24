@@ -1,5 +1,8 @@
 <template>
     <!--<c-lwc5 record-id="0012x000008lOzeAAE"></c-lwc5>-->
-    <c-create-account-record></c-create-account-record>
+    <c-create-account-record onaccountcreation={handleaccountcreation}></c-create-account-record>
+    <template if:true={recordId}>
+        <c-display-account-details account-id={recordId}></c-display-account-details>
+    </template>
    
 </template>
