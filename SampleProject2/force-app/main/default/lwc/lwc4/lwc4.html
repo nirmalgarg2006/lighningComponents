@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Account Details" icon-name="custom:custom5">
+        <lightning-record-form object-api-name={accountobject}
+         fields={myfields} onsuccess={handlerAccountCreated}>
+
+        </lightning-record-form>
+<hr>
+        <lightning-record-form object-api-name={eneryobject}
+        fields={energyfields} onsuccess={handleeneryresponse}>
+
+       </lightning-record-form>
+    </lightning-card>
+</template>

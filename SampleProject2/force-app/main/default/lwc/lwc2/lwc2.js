@@ -35,4 +35,10 @@ export default class Lwc2 extends LightningElement {
     {
         return `${this.firstname} ${this.lastname}`.toUpperCase();
     }
+
+    displaydetails = false;
+
+    handlecheckbox(event){
+        this.displaydetails = event.target.checked;
+    }
 } 

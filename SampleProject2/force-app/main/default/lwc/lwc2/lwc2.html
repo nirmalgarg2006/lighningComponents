@@ -19,9 +19,23 @@
         <lightning-input value={personname} label="Name" onchange={changepersonname}></lightning-input>
     </lightning-card>
 
-    <div class="slds-m-around_medium">
-        <lightning-input name="firstname" label="First Name" onchange={handlechange}></lightning-input>
-        <lightning-input name="lastname" label="Last Name" onchange={handlechange}></lightning-input>
-        <p class="slds-m-top_medium">{uppercasefullname}</p>
+    <div>
+        <lightning-card title="Changing Upper Case" icon-name="custom:custom14">
+            <div class="slds-m-around_medium">
+                <lightning-input name="firstname" label="First Name" onchange={handlechange}></lightning-input>
+                <lightning-input name="lastname" label="Last Name" onchange={handlechange}></lightning-input>
+                <p class="slds-m-top_medium">{uppercasefullname}</p>
+            </div>
+        </lightning-card>
+    </div>
+    <div>
+        <lightning-card title="Check Box Check" icon-name="custom:custom14">
+            <div class="slds-m-around_medium">
+               <lightning-input type="checkbox" label="Show Details" onchange={handlecheckbox}></lightning-input>
+               <template if:true={displaydetails}>
+                <p class="slds-m-top_medium">Displaying details</p>
+               </template>
+            </div>
+        </lightning-card>
     </div>
 </template>

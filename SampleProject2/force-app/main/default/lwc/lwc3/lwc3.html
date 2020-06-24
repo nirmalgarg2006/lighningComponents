@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Person Details" icon-name="custom:custom4">
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">
+                <lightning-formatted-text value={person.name}></lightning-formatted-text>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <lightning-formatted-text value={person.title}></lightning-formatted-text>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <lightning-formatted-phone value={person.phone}></lightning-formatted-phone>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <lightning-formatted-email value={person.email}></lightning-formatted-email>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout vertical-align="center">
+            <lightning-formatted-text value={UserId}></lightning-formatted-text>
+        </lightning-layout>
+    </lightning-card>
+   </template>
