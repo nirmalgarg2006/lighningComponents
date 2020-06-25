@@ -1,20 +1,29 @@
 <template>
-    <lightning-card title="Button Compoment">
+    <!--<lightning-card title="Button Compoment">
         <h1>Hello world. My name is {personname}</h1>
         <lightning-button variant="Neutral" label="Change Name" 
         title="Looks like a link" onclick={changename} class="slds-m-left_x-small"></lightning-button>
-    </lightning-card>
+    </lightning-card>-->
     <lightning-card title="Accounts" icon-name="standard:account">
         <template if:true={accounts}>
             <template for:each={accounts} for:item="acc">
-                <p key={acc.Id}>
+                <!--<p key={acc.Id}>
                     Name : {acc.Name}
                     Id : {acc.Id}
-                </p>
+                </p>-->
+                <c-accounttile key={acc.id} account={acc} onaccountselect={handleaccountclick}></c-accounttile>
             </template>
         </template>
+        <lightning-layout vertical-align="center">
+        <lightning-layout-item padding="around-small">
+            <template if:true={selectaccunt}>
+                <p>{selectaccunt.Name}</p>
+                <p>{selectaccunt.Website}</p>
+            </template>
+        </lightning-layout-item>
+        </lightning-layout>
     </lightning-card>
-    <lightning-card title="Greeting" icon-name="record">
+    <!--<lightning-card title="Greeting" icon-name="record">
         <h1>Greeting {personname}! how are you doing today?</h1>
         <lightning-input value={personname} label="Name" onchange={changepersonname}></lightning-input>
     </lightning-card>
@@ -37,5 +46,5 @@
                </template>
             </div>
         </lightning-card>
-    </div>
+    </div>-->
 </template>

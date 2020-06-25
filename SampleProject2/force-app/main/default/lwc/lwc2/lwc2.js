@@ -3,6 +3,8 @@ import lstAccounts from '@salesforce/apex/AccountController.getAccountList';
 export default class Lwc2 extends LightningElement {
     @track accounts;
     @track personname;
+    @track selectaccunt;
+    @track recordId;
     personname = 'Nirmal';
     @wire(lstAccounts)
     m1({data}){
@@ -40,5 +42,15 @@ export default class Lwc2 extends LightningElement {
 
     handlecheckbox(event){
         this.displaydetails = event.target.checked;
+    }
+
+    handleaccountclick(event){
+        this.recordId = event.detail;
+        console.log(this.recordId);
+        //alert(this.recordId);
+        this.selectaccunt = this.accounts.find(acc => acc.Id === this.recordId)
+        console.log(this.selectaccunt.Name);
+        console.log(this.selectaccunt.Phone);
+        console.log(this.selectaccunt.Website);
     }
 } 
