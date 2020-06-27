@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Desk Allocation" icon-name="custom:custom5">
+        <template if:true={BuildingPickListValues.data}>
+            <lightning-combobox name="buildings"
+                                label="Buildings"
+                                value={buildingvalue}
+                                placeholder="Select Building"
+                                options={BuildingPickListValues.data.values}
+                                onchange={handleChange} >
+            </lightning-combobox>
+        </template>
+        <template if:true={FloorPickListValues.data}>
+            <lightning-combobox name="floors"
+                                label="Floors"
+                                value={floorvalue}
+                                placeholder="Select Floor"
+                                options={FloorPickListValues.data.values}
+                                onchange={handleChange} >
+            </lightning-combobox>
+        </template>
+        <template if:true={WingPickListValues.data}>
+            <lightning-combobox name="wings"
+                                label="Wings"
+                                value={wingvalue}
+                                placeholder="Select Wing"
+                                options={WingPickListValues.data.values}
+                                onchange={handleChange} >
+            </lightning-combobox>
+        </template>
+    </lightning-card>
+</template>
