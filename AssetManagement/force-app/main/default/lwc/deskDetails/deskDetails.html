@@ -1,5 +1,6 @@
 <template>
-    <lightning-card title="Desk Allocation" icon-name="custom:custom5">
+    <lightning-record-edit-form object-api-name="EmpMaster__c" record-id={recordId}>
+    
         <template if:true={BuildingPickListValues.data}>
             <lightning-combobox name="buildings"
                                 label="Buildings"
@@ -40,5 +41,17 @@
                  options={deskOptions} value={selectedDesk} type="radio"></lightning-radio-group>
             </lightning-layout-item>
         </lightning-layout>
-    </lightning-card>
+
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="arond-small">
+                <lightning-input-field field-name="Name"></lightning-input-field>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-button type="submit"
+        label="Update"
+        class="slds-m-top_small"
+        variant="brand" ></lightning-button>
+   
+</lightning-record-edit-form>
 </template>
