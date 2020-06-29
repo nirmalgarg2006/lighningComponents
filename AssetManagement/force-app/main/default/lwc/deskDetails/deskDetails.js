@@ -5,6 +5,7 @@ import DESK_OBJECT from '@salesforce/schema/DeskMaster__c'
 import BUILDING_FIELD from '@salesforce/schema/DeskMaster__c.Building__c'
 import FLOOR_FIELD from '@salesforce/schema/DeskMaster__c.Floor__c'
 import WING_FIELD from '@salesforce/schema/DeskMaster__c.Wing__c'
+import getavailabledesk from '@salesforce/apex/EmployeeController.getAvailableDesks'
 export default class DeskDetails extends LightningElement {
 
     @track
@@ -24,6 +25,9 @@ export default class DeskDetails extends LightningElement {
 
     @track
     selectedfloor;
+
+    @track
+    selectedDesk;
 
     @track
     selectedwing;
@@ -60,5 +64,31 @@ export default class DeskDetails extends LightningElement {
             this.selectedwing = event.detail.value;
             console.log(this.selectedwing);
         }
+    }
+
+    @track
+    deskOptions=[];
+
+    records=[];
+    showavailabledesk(){
+        //alert('Show available desks');
+        getavailabledesk({
+            building : this.selectedbuilding,
+            floor : this.selectedfloor,
+            wing : this.selectedwing
+        }).then((data) =>
+        {
+            this.records = data;
+            console.log(data[0]);
+            //alert(data);
+            this.records.forEach(element => {
+                console.log(element.Name + ' ' + element.Id + ' ' + element.SeatNo__c);
+                this.deskOptions.push({
+                    label : element.Name + ' Seat No. ' + element.SeatNo__c,
+                    value : element.Id
+                })
+            });
+            console.log(this.deskOptions[0]);
+        });
     }
 }

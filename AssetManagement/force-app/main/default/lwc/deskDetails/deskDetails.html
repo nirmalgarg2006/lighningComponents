@@ -27,5 +27,18 @@
                                 onchange={handleChange} >
             </lightning-combobox>
         </template>
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around=small">
+                <lightning-button variant="Brand" title="Primary action"
+                label="Show Available Desk" onclick={showavailabledesk} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="arond-small">
+                <lightning-radio-group name="desks" label="Available Desks"
+                 options={deskOptions} value={selectedDesk} type="radio"></lightning-radio-group>
+            </lightning-layout-item>
+        </lightning-layout>
     </lightning-card>
 </template>
