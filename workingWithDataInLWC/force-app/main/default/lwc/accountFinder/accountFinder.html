@@ -1,0 +1,61 @@
+<template>
+    <lightning-card title="ApexImperativeMethod" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <table style="width: 300px;">
+                <tr>
+                    <td><lightning-input onchange={handleChange} value={searchKey}></lightning-input></td>
+                </tr>
+                <tr>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td><lightning-button variant="brand" label="Search" title="Search" onclick={handleSearch} class="slds-m-left_x-small"></lightning-button></td>
+                </tr>
+            </table>
+        </div>
+    
+    <br/>
+    <template if:true={accounts}>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Phone">Phone</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="AccountNumber">AccountNumber</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={accounts} for:item="account">
+                    <tr key={account.Id} class="slds-hint-parent">
+                        <th data-label={account.Name} scope="row">
+                            <div class="slds-truncate" title={account.Name}>
+                                <a href="javascript:void(0);" tabindex="-1" onclick={handleClick}>{account.Name}</a>
+                            </div>
+                        </th>
+                        <td data-label={account.Name}>
+                            <div class="slds-truncate" title={account.Name}>{account.Name}</div>
+                        </td>
+                        <td data-label={account.Phone}>
+                            <div class="slds-truncate" title={account.Phone}>{account.Phone}</div>
+                        </td>
+                        <td data-label={account.AccountNumber}>
+                            <div class="slds-truncate" title={account.AccountNumber}>{account.AccountNumber}</div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </template>
+    <template if:true={error}>
+        <p>{error}</p>
+    </template></lightning-card>
+</template>

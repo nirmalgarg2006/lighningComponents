@@ -1,0 +1,8 @@
+<aura:component>
+    <aura:registerEvent name="searchEvent" type="c:accountSearchEvent" />
+    <aura:attribute name="searchText" type="string" default="" />
+    <div class="slds-p-around_small">
+        <lightning:input name="searchInput" value="{!v.searchText}" placeholder="Type account name" onchange="{!c.handleChange}">
+        </lightning:input>
+    </div>
+</aura:component>	

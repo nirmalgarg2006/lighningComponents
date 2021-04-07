@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="HelloForEach" icon-name="custom:custom13">
+        <div class="slds-m-around_medium">
+            <lightning-input name='firstName' label="First Name" onchange={handleChange}></lightning-input>
+            <lightning-input name='lastName' label="Last Name" onchange={handleChange}></lightning-input>
+            <p class="slds-m-top_medium">Uppercased Full Name: {uppercasedFullName}</p>
+        </div>
+    </lightning-card>
+    <br/>
+    <lightning-card title="HelloForEach" icon-name="custom:custom14">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Title">Title</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={contacts} for:item="contact">
+                    <tr key={contact.Id} class="slds-hint-parent">
+                        <td data-label={contact.Name}>
+                            <div class="slds-truncate" title={contact.Name}>{contact.Name}</div>
+                        </td>
+                        <td data-label={contact.Title}>
+                            <div class="slds-truncate" title={contact.Title}>{contact.Title}</div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card><br/>
+    <c-hello-child item-name="Nirmal"></c-hello-child><br/>
+    <c-hello-child item-name="Garg"></c-hello-child>
+</template>

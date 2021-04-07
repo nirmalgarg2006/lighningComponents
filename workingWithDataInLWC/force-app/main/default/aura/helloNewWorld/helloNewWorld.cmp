@@ -1,0 +1,11 @@
+<aura:component implements="lightning:isUrlAddressable" access="global">
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <aura:attribute name="PersonName" type="string" default="" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div>
+        <lightning:formattedText value="{!v.PersonName}"></lightning:formattedText>
+    </div>
+    <div>
+        <lightning:button variant="brand" label="Get Enclosing Tab Id" onclick="{! c.getEnclosingTabId }" />
+    </div>
+</aura:component>	

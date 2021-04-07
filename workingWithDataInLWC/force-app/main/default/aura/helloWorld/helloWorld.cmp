@@ -1,0 +1,4 @@
+<aura:component implements="lightning:isUrlAddressable" access="global" >
+	
+	Hello World!
+</aura:component>

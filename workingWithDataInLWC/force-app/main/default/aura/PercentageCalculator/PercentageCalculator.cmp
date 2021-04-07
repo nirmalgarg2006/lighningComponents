@@ -1,0 +1,65 @@
+<aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId" access="global" controller="ContactController">
+    <aura:attribute name="wholenumber" type="integer" access="public"></aura:attribute>
+    <aura:attribute name="percentage"  type="integer" access="public"></aura:attribute>
+    <aura:attribute name="calpercentage" type="integer" access="public"></aura:attribute>
+    <aura:attribute name="Age" type="integer" default="25" access="public"></aura:attribute>
+    <aura:attribute name="colors" type="string[]" default="['Red', 'Blue', 'Green']" access="public"></aura:attribute>
+    <aura:attribute name="num1" type="integer" access="public"></aura:attribute>
+    <aura:attribute name="num2" type="integer" access="public"></aura:attribute>
+    <aura:attribute name="contacts" type="Contact[]"></aura:attribute>
+    <aura:handler name="quickContactEvent" event="c:QuickContactEvent" action="{!c.handleComponentEvent}"></aura:handler>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+        <!--<div class="slds-p-around_medium">
+            <lightning:input type="number" name="input1" label="Enter a number" value="{!v.wholenumber}" />
+            <lightning:input type="number" name="input2" label="Enter Percentage" value="{!v.percentage}" formatter="percent-fixed" />
+            <lightning:input type="number" placeholder="Enter Age" label="Enter Age" aura:id="ageinput"></lightning:input>
+            <br/>
+    		<lightning:button variant="brand" label="Calculate" title="Calculate Percentage" onclick="{!c.handleClick}" />
+        </div>
+
+        <div class="slds-p-around_medium">
+            <p><lightning:formattedNumber value="{!v.calpercentage}"/></p>
+        </div>-->
+    <!--<lightning:card title="Calculator">
+        <div class="slds-p-around_medium">
+            <lightning:input type="number" name="input1" label="Enter first number" value="{!v.num1}" required="true" />
+            <lightning:input type="number" name="input2" label="Enter second number" value="{!v.num2}" required="true" />
+            
+            <br/>
+    		<lightning:button variant="brand" label="Add" title="Add " onclick="{!c.performAdd}" />
+        </div>
+        <div class="slds-p-around_medium">
+            <p><lightning:formattedNumber aura:id="addOutput"/></p>
+        </div>
+    </lightning:card>-->
+
+    <!--<lightning:card title="Contacts">-->
+        <!--<lightning:button variant="brand" label="Get Contacts" title="Get Cotacts" onclick="{!c.getContactsList}" />
+        <br/>
+        </lightning:card>-->
+        <c:QuickContact accountId="{!v.recordId}"></c:QuickContact>
+        <br/>
+        <div class="slds-p-around_medium">
+            <div class="slds-grid slds-wrap">
+                <aura:iteration items="{!v.contacts}" var="contact">
+                    <div class="slds-col slds-size_1-of-3 slds-p-around_medium">
+                        <lightning:card variant="Narrow" title="{!contact.Name}" iconName="standard:contact">
+                            <aura:set attribute="actions">
+                                <lightning:button name="{!contact.Id}" label="View Details" variant="brand" onclick="{!c.doRedirect}"></lightning:button>
+                            </aura:set>
+                            <aura:set attribute="footer">
+                                <lightning:badge label="{!contact.Email}"/>
+                            </aura:set>
+                            <p class="slds-p-horizontal_small">
+                                {!contact.Phone}
+                            </p>
+                            <p class="slds-p-horizontal_small">
+                                {!contact.MailingStreet}
+                            </p>
+                        </lightning:card>
+                        <br/>
+                    </div>
+                </aura:iteration>
+            </div>
+        </div>
+</aura:component>

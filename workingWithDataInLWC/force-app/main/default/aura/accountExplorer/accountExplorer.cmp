@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForAllPageTypes, force:appHostable" controller="accountSearchController">
+    <aura:handler name="searchEvent" event="c:accountSearchEvent" action="{!c.doSearch}"></aura:handler>
+    <aura:attribute name="accounts" type="Object"></aura:attribute>
+    <div class="slds-p-around_small">
+        <!--header component-->
+        <c:header headermessage="Account Explorer" headercontent="Account Explorer"></c:header>
+    </div>
+    <div class="slds-p-around_small">
+        <!--Search Component-->
+        <c:searchComponent />
+    </div>
+    <div class="slds-p-around_small">
+        <!--list component-->
+        <aura:if isTrue="{!v.accounts}">
+            <c:accountList accounts="{!v.accounts}" />
+        </aura:if>
+    </div>
+</aura:component>	
