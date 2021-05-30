@@ -38,7 +38,7 @@
                     <tr key={account.Id} class="slds-hint-parent">
                         <th data-label={account.Name} scope="row">
                             <div class="slds-truncate" title={account.Name}>
-                                <a href="javascript:void(0);" tabindex="-1" onclick={handleClick}>{account.Name}</a>
+                                <a name={account.Id} href="javascript:void(0);" tabindex="-1" onclick={handleClick}>{account.Name}</a>
                             </div>
                         </th>
                         <td data-label={account.Name}>

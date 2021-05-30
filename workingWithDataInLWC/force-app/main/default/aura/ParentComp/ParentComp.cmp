@@ -1,4 +1,4 @@
 <aura:component>
     <c:ChildComp aura:id="childcomp"></c:ChildComp>
     <lightning:button label="Invoke Child" value="Invole Child" onclick="{!c.handleClick}"></lightning:button>
-</aura:component>	
+</aura:component>

@@ -1,4 +1,4 @@
-<aura:component implements="flexipage:availableForAllPageTypes, force:appHostable" controller="accountSearchController">
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable" controller="accountSearchController">
     <aura:handler name="searchEvent" event="c:accountSearchEvent" action="{!c.doSearch}"></aura:handler>
     <aura:attribute name="accounts" type="Object"></aura:attribute>
     <div class="slds-p-around_small">
@@ -15,4 +15,4 @@
             <c:accountList accounts="{!v.accounts}" />
         </aura:if>
     </div>
-</aura:component>	
+</aura:component>

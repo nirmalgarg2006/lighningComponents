@@ -5,4 +5,4 @@
         <lightning:input name="searchInput" value="{!v.searchText}" placeholder="Type account name" onchange="{!c.handleChange}">
         </lightning:input>
     </div>
-</aura:component>	
+</aura:component>

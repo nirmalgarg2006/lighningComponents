@@ -8,4 +8,4 @@
     <div>
         <lightning:button variant="brand" label="Get Enclosing Tab Id" onclick="{! c.getEnclosingTabId }" />
     </div>
-</aura:component>	
+</aura:component>

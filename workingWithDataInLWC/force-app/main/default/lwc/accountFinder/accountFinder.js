@@ -1,8 +1,9 @@
 import { LightningElement, wire } from 'lwc';
 import queryAccounts from '@salesforce/apex/queryAccounts.queryAccounts'
-export default class AccountFinder extends LightningElement {
+import { NavigationMixin } from 'lightning/navigation';
+export default class AccountFinder extends NavigationMixin(LightningElement) {
 
-    
+    recordId;
     searchKey='';
     accounts;
     error;
@@ -22,6 +23,17 @@ export default class AccountFinder extends LightningElement {
     }
 
     handleClick(event){
-        console.log(event);
+        this.recordId = event.target.name;
+        if(this.recordId){
+            // View a custom object record.
+            this[NavigationMixin.Navigate]({
+                type: 'standard__recordPage',
+                attributes: {
+                    recordId: this.recordId,
+                    objectApiName: 'Account', // objectApiName is optional
+                    actionName: 'view'
+                }
+            });
+        }
     }
 }

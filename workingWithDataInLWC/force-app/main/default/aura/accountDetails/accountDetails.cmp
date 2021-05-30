@@ -9,4 +9,4 @@
         columns="2"
         mode="readonly" />
     </div>
-</aura:component>	
+</aura:component>

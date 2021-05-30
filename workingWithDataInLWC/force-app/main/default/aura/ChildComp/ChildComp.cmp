@@ -3,4 +3,4 @@
         <aura:attribute name="param1" type="String"></aura:attribute>
         <aura:attribute name="param2" type="String"></aura:attribute>
     </aura:method>
-</aura:component>	
+</aura:component>

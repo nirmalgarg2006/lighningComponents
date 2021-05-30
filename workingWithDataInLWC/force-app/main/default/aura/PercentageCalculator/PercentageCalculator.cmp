@@ -1,4 +1,4 @@
-<aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId" access="global" controller="ContactController">
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="ContactController">
     <aura:attribute name="wholenumber" type="integer" access="public"></aura:attribute>
     <aura:attribute name="percentage"  type="integer" access="public"></aura:attribute>
     <aura:attribute name="calpercentage" type="integer" access="public"></aura:attribute>

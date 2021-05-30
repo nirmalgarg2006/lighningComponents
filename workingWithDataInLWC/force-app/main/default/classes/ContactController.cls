@@ -1,5 +1,5 @@
 public with sharing class ContactController {
-	@AuraEnabled
+	/*@AuraEnabled
     public static List<Contact> getContacts(string accountId){
         system.debug('account id - ' + accountId);
         List<Contact> contacts = 
@@ -16,6 +16,17 @@ public with sharing class ContactController {
             con.AccountId = (Id)accountId;
             insert con;
             return con;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }*/
+
+    @AuraEnabled(cacheable=true)
+    public static List<contact> getContacts(){
+        try {
+
+            return [select Id, FirstName, LastName, Email from contact limit 10];
+            
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

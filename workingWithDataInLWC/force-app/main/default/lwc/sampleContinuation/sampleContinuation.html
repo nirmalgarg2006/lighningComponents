@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Sample Continuation" icon-name="custom:custom14">
+        <div class="slds-m-around_small">
+            <lightning-button variant="brand" label="Call Continuation" onclick={callContinuation}>
+            </lightning-button>
+        </div>
+        
+        <br/>
+        <template if:true={outputdata}>
+            <lightning-datatable
+                key-field="id"
+                data={outputdata}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+    </lightning-card>
+</template>

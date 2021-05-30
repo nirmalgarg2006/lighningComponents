@@ -18,4 +18,4 @@
             <lightning:button variant="brand" label="Create Contact" title="Create Contact" onclick="{!c.doSave}" />
         </lightning:card>
     </div>
-</aura:component>	
+</aura:component>
