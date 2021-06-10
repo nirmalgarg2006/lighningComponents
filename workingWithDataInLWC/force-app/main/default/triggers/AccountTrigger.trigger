@@ -13,6 +13,11 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
             lstContact.add(c);
         }
         insert lstContact;
+
+        Feeditem accountPost = new Feeditem();
+        accountPost.parentId = Trigger.new[0].Id;
+        accountPost.body = 'Hello world';
+        insert accountPost;
     }
     if(Trigger.isUpdate && Trigger.isAfter){
 
