@@ -1,0 +1,14 @@
+<template>
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={programs}
+                columns={columns}
+                onclick={handleClick}
+                class="hello">
+        </lightning-datatable>
+    </div>
+    <div>
+        <c-launchpage set-tab-dirty={setTabDirty}></c-launchpage>
+    </div>
+</template>

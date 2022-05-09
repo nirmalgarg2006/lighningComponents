@@ -1,7 +1,8 @@
-<aura:component>
-    <aura:attribute name="message" type="string" default=""></aura:attribute>
-    <p>Message : {!v.message}</p>
-    <div>
-        <lightning:button label="HelloWorld" onclick="{!c.handleClick}"></lightning:button>
-    </div>
+<!--SampleComponent.cmp-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable" access="global">
+    <!--Declare Attributes-->
+    <lightning:unsavedChanges aura:id="unsaved" />
+    <aura:attribute name="vfMsgMethod" type="object" description="this attribute is for visualforce page javascript method"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
 </aura:component>

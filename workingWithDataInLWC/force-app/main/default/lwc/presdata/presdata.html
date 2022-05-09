@@ -1,0 +1,149 @@
+<template>
+    <lightning-card title="Pres Data" icon-name="custom:custom19">
+        <div>
+            <!--<lightning-layout multiple-rows="true">
+                <template for:each={predata} for:item="item">
+                    <lightning-layout-item size="3" padding="around-small" key={item.key}>
+                        <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">1</div>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>-->
+
+            <lightning-layout multiple-rows="true">
+
+
+                <template if:true={finaldata}>
+                    <template for:each={finaldata} for:item="item" for:index="index">
+                        <template if:true={item.detail}>
+                            <lightning-layout-item size="3" padding="around-small" key={item.key} data-id={index}>
+                                <div class="custom-box slds-box slds-p-around_medium slds-text-align_center container"
+                                    data-value={item.counter} data-id={index} onclick={handleClick}>
+                                    <div class="triangle slds-theme_alt-inverse">
+                                        
+                                          
+                                    </div>
+                                  <ul>
+                                      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                      </ul>
+                                                                    {item.value.value}
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12" padding="around-small" key={item.key}
+                                data-id={item.counter} style="display: none;">
+                                <c-precdetails detailcounter={item.counter}></c-precdetails>
+                                <!--
+                           <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">
+                           <lightning-layout multiple-rows="true">
+                               <lightning-layout-item size="6">
+                                   <div style="float: left;">
+                                       <strong>{item.value.key}</strong>
+                                   </div>
+                               </lightning-layout-item>
+                               <lightning-layout-item size="6">
+                                   <div style="float: right;">
+                                        <lightning-button-icon icon-name="utility:settings"  alternative-text="Close" title="X" data-id={item.counter} onclick={closeDetailSection}></lightning-button-icon>
+                                   </div>
+                               </lightning-layout-item>
+                           </lightning-layout>
+                                <div  data-value={item.counter}>
+                                   
+                                </div>
+                            </div>
+                            -->
+                            </lightning-layout-item>
+                        </template>
+                        <template if:false={item.detail}>
+                            <lightning-layout-item size="3" padding="around-small" key={item.key} data-id={index}>
+                                <div class="custom-box slds-box slds-p-around_medium slds-text-align_center container"
+                                    data-value={item.value.key} data-id={index} onclick={handleClick}>
+                                   
+                                    <div class="triangle" style="background-color:rgb(42, 30, 212)"></div>
+                                    <lightning-icon class="iconclass blue-icon" icon-name="utility:check" size="x-small"></lightning-icon>
+                                    {item.value.value}
+                                </div>
+                            </lightning-layout-item>
+                        </template>
+                    </template></template>
+
+            </lightning-layout>
+        </div>
+    </lightning-card>
+    <lightning-card>
+
+        <lightning-combobox name="progress" label="Status" value="" placeholder="Select Progress" options={options}
+            onchange={handleChange} required></lightning-combobox>
+        <p>Selected value is: {value}</p>
+
+    </lightning-card>
+    <lightning-card>
+        <div class="slds-form-element"><label class="slds-form-element__label" for="combobox-id-1"
+                id="combobox-label-id-2">Relate To</label>
+            <div class="slds-form-element__control">
+                <div class="slds-combobox_container slds-size_small">
+                    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click">
+                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                            role="none"><button type="button" class="slds-input_faux slds-combobox__input"
+                                aria-labelledby="combobox-label-id-2 combobox-id-1-selected-value"
+                                id="combobox-id-1-selected-value" aria-controls="listbox-id-1" aria-expanded="false"
+                                aria-haspopup="listbox"><span class="slds-truncate" id="combobox-value-id-45">Select an
+                                    Option…</span></button><span
+                                class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right"><svg
+                                    class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default"
+                                    aria-hidden="true">
+                                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" id="down"><path d="M8.3 14h35.4c1 0 1.7 1.3.9 2.2L27.3 37.4c-.6.8-1.9.8-2.5 0L7.3 16.2c-.7-.9-.1-2.2 1-2.2z"></path></svg>
+                                    </use>
+                                </svg></span></div>
+                        <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid"
+                            role="listbox">
+                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                <li role="presentation" class="slds-listbox__item">
+                                    <div id="option1"
+                                        class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                        role="option"><span
+                                            class="slds-media__figure slds-listbox__option-icon"></span><span
+                                            class="slds-media__body"><span class="slds-truncate" title="Option A">Option
+                                                A</span></span></div>
+                                </li>
+                                <li role="presentation" class="slds-listbox__item">
+                                    <div id="option2"
+                                        class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                        role="option"><span
+                                            class="slds-media__figure slds-listbox__option-icon"></span><span
+                                            class="slds-media__body"><span class="slds-truncate" title="Option B">Option
+                                                B</span></span></div>
+                                </li>
+                                <li role="presentation" class="slds-listbox__item">
+                                    <div id="option3"
+                                        class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                        role="option"><span
+                                            class="slds-media__figure slds-listbox__option-icon"></span><span
+                                            class="slds-media__body"><span class="slds-truncate"
+                                                title="Option ABCDEFGHIJKLMNOPQRSTUVWXYZ">Option
+                                                ABCDEFGHIJKLMNOPQRSTUVWXYZ</span></span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+    <span class="slds-icon_container slds-icon-standard-connected-apps" title="Description of icon when needed">
+       <lightning-icon icon-name="utility:incoming_call" size="small"></lightning-icon>
+        <span class="slds-assistive-text">Description of icon when needed</span>
+        </span>
+
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1">
+              <span>{datelabel}
+                  <lightning-helptext content="You'll receive weekly updates"></lightning-helptext>
+              </span>
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <span>
+                    <lightning-input data-id="dt1" type="date" name="input2" value="2020-09-07"></lightning-input>
+                </span>
+              </div>
+        </div>
+</template>

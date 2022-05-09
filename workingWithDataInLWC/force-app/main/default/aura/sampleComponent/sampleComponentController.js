@@ -1,7 +1,8 @@
 ({
-    handleClick : function(component, event, helper) {
-        let eventsource = event.getSource();
-        let labelValue = eventsource.get("v.label");
-        component.set("v.message", labelValue);
+    
+    doInit: function(cmp) {
+        alert('xxx');
+        var unsaved = cmp.find("unsaved");
+        unsaved.setUnsavedChanges(true, { label: 'My component name' });
     }
 })

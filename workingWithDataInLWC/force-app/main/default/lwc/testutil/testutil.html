@@ -1,0 +1,387 @@
+<template>
+    <div class="container">
+        <button>Click me</button>
+      </div>
+    <div class="slds-table--header-fixed_container" style="height:450px;">
+        <div class="slds-scrollable_y" style="height:100%;" onscroll={handlescroll}>
+            <table
+                class="slds-no-row-hover slds-table slds-table_bordered 
+                slds-table_cell-buffer slds-table--header-fixed">
+                <thead>
+                    <tr class="slds-text-title_caps slds-line-height_reset">
+                        <template for:each={columns} for:item="col">
+                            <th scope="col" key={col.label} data-label={col.label} onmouseenter={handlemouseenter}
+                            onmouseleave={handlemouseleave} style="width: 50px;">
+                                <div class="slds-p-top_x-small slds-truncate slds-cell-fixed" title="Opportunity Name">
+                                    {col.label}
+                                    <span>
+                                        <template if:true={col.sorting}>
+                                            <lightning-icon icon-name={col.iconname} size="xx-small" onclick={handleClick}>
+                                            </lightning-icon>
+                                        </template>
+                                        
+                                    </span>
+                                </div>
+                            </th>
+                        </template>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={programs} for:item="row">
+                            <tr key={row.index}>
+                                
+                                <th scope="row" data-label="Opportunity Name">
+                                    <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                                </th>
+                                <td data-label="Account Name">
+                                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                                </td>
+                                <td data-label="Account Name">
+                                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                                </td><td data-label="Account Name">
+                                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                                </td>
+                                <td data-label="Account Name">
+                                    <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                                </td>
+                            </tr>
+                        </template>
+                        
+                        </tbody>
+                    </table>
+                    </div>
+                    </div>
+    <div class="slds-table--header-fixed_container" style="height:450px;" onclick={handleClickEvent}>
+        <div class="slds-scrollable_y" style="height:100%;">
+            <table
+                class="slds-no-row-hover slds-table slds-table_bordered slds-table_cell-buffer slds-table--header-fixed">
+                <thead>
+                    <tr class="slds-text-title_caps slds-line-height_reset">
+                        <th scope="col">
+                            <div class="slds-p-top_x-small slds-truncate slds-cell-fixed" title="Opportunity Name">
+                                Opportunity Name
+                                <span>
+                                    <lightning-icon icon-name="utility:arrowdown" size="xx-small" onclick={handleClick}>
+                                    </lightning-icon>
+                                </span>
+                            </div>
+                        </th>
+
+                        <th scope="col">
+
+                            <a class="slds-th__action slds-text-link_reset slds-cell-fixed" href="#" role="button"
+                                tabindex="0">
+                                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                    <span class="slds-truncate" title="Name">Name</span>
+                                    <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                        <lightning-icon icon-name="utility:arrowdown" size="xx-small"></lightning-icon>
+                                    </span>
+                                </div>
+                            </a>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-p-top_x-small slds-truncate slds-cell-fixed" title="Close Date">Close Date
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"> <span>
+                                    <lightning-icon icon-name="utility:arrowdown" size="xx-small" onclick={handleClick}>
+                                    </lightning-icon>
+                                </span></div>
+                        </th>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+
+
+                    </tr>
+                    <template if:true={displaychild}>
+                        <tr>
+                            <td colspan="3">
+                                <c-standard-table-component></c-standard-table-component>
+                            </td>
+                            
+                        </tr>
+                    
+                    </template>
+
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub"><a href="javascript:void(0);">Cloudhub</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" data-label="Opportunity Name">
+                            <div class="slds-truncate" title="Cloudhub + Anypoint Connectors"><a
+                                    href="javascript:void(0);">Cloudhub + Anypoint Connectors</a></div>
+                        </th>
+                        <td data-label="Account Name">
+                            <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                        </td>
+                        <td data-label="Close Date">
+                            <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={programs}
+                columns={columns}>
+        </lightning-datatable>
+    </div>  
+</template>

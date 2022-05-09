@@ -1,7 +1,12 @@
 import { LightningElement, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
+
 export default class NavigationDemo extends NavigationMixin(LightningElement) {
     
+connectedCallback(){
+    
+}
+
     handleNavigate(){
         /*this[NavigationMixin.GenerateUrl]({
             type: 'standard__navItemPage',

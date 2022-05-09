@@ -1,0 +1,16 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:includeLightning />
+    <!--Lightning Container-->
+    <div style="width:100%;height:100px;" id="LightningContainer"/>
+     
+    <script type="text/javascript">
+    //Create Lightning Component
+    alert('i m here');
+    $Lightning.use("c:sampleApp", function() {
+        $Lightning.createComponent("c:sampleComponent", {},"LightningContainer", function(component) {
+            console.log('Component created');
+        });
+    });
+     
+    </script>
+</apex:page>
